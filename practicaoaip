@@ -37,21 +37,21 @@ namespace ConsoleApplication1
            Console.WriteLine();
 	       }
 		
-         static void um(int [,] mt1, int [,] mt2, int [,] mt3, int n, int m, int h)
+         static void um(int [,] a, int [,] b, int [,] c, int n, int m, int d)
 	       {
 		        for (int i = 0; i < n; i++)
             {
                for (int j = 0; j < m; j++)
                {
-			            int x = 0;
-                  for (int k = 0; k < h; k++)
+			            int znach = 0;
+                  for (int l = 0; l < d; l++)
                   {
-				             x = x + mt1[i, k] * mt2[k, j];
+				             znach = znach + a[i, l] * b[l, j];//считает каждое новое значение в новой матрице
                   }
-			            mt3[i, j] = x;
+			            c[i, j] = znach;
                }
             }
-		        f2(mt3, n, m);
+		        f2(c, n, m);
 	       }
 		
          static void Main(string[] args)
@@ -70,6 +70,10 @@ namespace ConsoleApplication1
         		   int [,] c = new int[m1,n1];
 	        	   um(a, b, c, n1, m2, n2); //передаем 3 матрицы, длину и ширину третьей матрицы и длину второй матрицы для дальнеших расчетов
 	        	}
+			else
+			{
+			   Console.WriteLine("Умножить невозможно, число столбцов в первой матрице не равно числу строк во второй");
+			}
          }
      }
 }
