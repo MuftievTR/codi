@@ -11,22 +11,22 @@ namespace ConsoleApplication1
         static int [,] a;
         static int [,] b;
         
-	      static void f1(int [,] mt, int n, int m)
-	      {
-	         Random rnd = new Random();
-		       for (int i = 0; i < n; i++)
+	static void f1(int [,] mt, int n, int m)
+	{
+	   Random rnd = new Random();
+	   for (int i = 0; i < n; i++)
            {
               for (int j = 0; j < m; j++)
                  {
                     mt[i, j] = rnd.Next(0, 10);
                  }
            }
-		       f2(mt, n, m);
-	      }
+	   f2(mt, n, m);
+	}
 		
         static void f2(int [,] mt, int n, int m)
         {
-		       for (int i = 0; i < n; i++)
+	   for (int i = 0; i < n; i++)
            {
               for (int j = 0; j < m; j++)
               {
@@ -35,45 +35,45 @@ namespace ConsoleApplication1
               Console.WriteLine();
            }
            Console.WriteLine();
-	       }
+	}
 		
-         static void um(int [,] a, int [,] b, int [,] c, int n, int m, int d)
-	       {
-		        for (int i = 0; i < n; i++)
-            {
-               for (int j = 0; j < m; j++)
-               {
-			            int znach = 0;
-                  for (int l = 0; l < d; l++)
-                  {
-				             znach = znach + a[i, l] * b[l, j];//считает каждое новое значение в новой матрице
-                  }
-			            c[i, j] = znach;
-               }
-            }
-		        f2(c, n, m);
-	       }
+        static void um(int [,] a, int [,] b, int [,] c, int n, int m, int d)
+	{
+	   for (int i = 0; i < n; i++)
+           {
+              for (int j = 0; j < m; j++)
+              {
+	         int znach = 0;
+                 for (int l = 0; l < d; l++)
+                 {
+		    znach = znach + a[i, l] * b[l, j];//считает каждое новое значение в новой матрице
+                 }
+		 c[i, j] = znach;
+              }
+           }
+	   f2(c, n, m);
+	 }
 		
          static void Main(string[] args)
          {
-		        int n1, m1, n2, m2;
-		        n1 = Convert.ToInt32(Console.ReadLine());
-		        m1 = Convert.ToInt32(Console.ReadLine());
-		        n2 = Convert.ToInt32(Console.ReadLine());
-		        m2 = Convert.ToInt32(Console.ReadLine());
-	        	a = new int[n1,m1];
-	        	b = new int[n2,m2];
-        		f1(a, n1, m1);
-	        	f1(b, n2, m2);
-	        	if (m1 == n2)
-	        	{
-        		   int [,] c = new int[m1,n1];
-	        	   um(a, b, c, n1, m2, n2); //передаем 3 матрицы, длину и ширину третьей матрицы и длину второй матрицы для дальнеших расчетов
-	        	}
-			else
-			{
-			   Console.WriteLine("Умножить невозможно, число столбцов в первой матрице не равно числу строк во второй");
-			}
+	    int n1, m1, n2, m2;
+	    n1 = Convert.ToInt32(Console.ReadLine());
+	    m1 = Convert.ToInt32(Console.ReadLine());
+	    n2 = Convert.ToInt32(Console.ReadLine());
+	    m2 = Convert.ToInt32(Console.ReadLine());
+	    a = new int[n1,m1];
+	    b = new int[n2,m2];
+            f1(a, n1, m1);
+	    f1(b, n2, m2);
+	    if (m1 == n2)
+	    {
+               int [,] c = new int[m1,n1];
+	       um(a, b, c, n1, m2, n2); //передаем 3 матрицы, длину и ширину третьей матрицы и длину второй матрицы для дальнеших расчетов
+	    }
+	    else
+	    {
+	       Console.WriteLine("Умножить невозможно, число столбцов в первой матрице не равно числу строк во второй");
+	    }
          }
      }
 }
